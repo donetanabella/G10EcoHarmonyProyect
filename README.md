@@ -67,7 +67,7 @@ MAT_JAVA_<< tema >>_<< apellido_miembro >>.pdf
 
 ## Backend
 
-<< nombre archivo >>.<< ext >>
+<< nombre_archivo >>.<< ext >>
 
 -   Ubicación: /eco_harmony_park/producto/backend/…
 -   Ejemplo: tabs.json
@@ -75,7 +75,7 @@ MAT_JAVA_<< tema >>_<< apellido_miembro >>.pdf
 
 ## Frontend
 
-<< nombre archivo >>.<< ext >>
+<< nombre_archivo >>.<< ext >>
 
 -   Ubicación: /eco_harmony_park/producto/frontend/…
 -   Ejemplo: index.html
@@ -83,7 +83,7 @@ MAT_JAVA_<< tema >>_<< apellido_miembro >>.pdf
 
 ## Documentación
 
-DOC_<< nombre archivo >>.pdf
+DOC_<< nombre_archivo >>.pdf
 
 -   Ubicación: /eco_harmony_park/producto/documentacion
 -   Ejemplo: DOC_RNF.pdf
@@ -97,7 +97,7 @@ DOC_<< nombre archivo >>.pdf
 -   JAVA: javascript.
 -   tema: tema a tratar en el archivo.
 -   apellido_miembro: apellido del miembro que sube el archivo.
--   nombre archivo: nombre designado para el archivo ya sea por algún miembro o por la tecnología usada.
+-   nombre_archivo: nombre designado para el archivo ya sea por algún miembro o por la tecnología usada.
 -   ext: extensión de un archivo.
 
 # Criterio de Línea Base
