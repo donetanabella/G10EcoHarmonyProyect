@@ -14,8 +14,7 @@
 
 
 # Estructura del repositorio
-
-```csharp
+```
 /
 ├── eco_harmony_park/
 │   ├── proyecto/
