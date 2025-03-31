@@ -14,6 +14,7 @@
 
 
 # Estructura del repositorio
+
 ```
 /
 ├── eco_harmony_park/
@@ -39,8 +40,8 @@
 │   │   │   └── README.md
 │   │   └── documentacion/
 └── README.md
-
 ```
+
 # Reglas de nombrado
 
 ## Aprendiendo Backend
