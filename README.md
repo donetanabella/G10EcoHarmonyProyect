@@ -19,13 +19,13 @@
 ├── eco_harmony_park/
 │   ├── proyecto/
 │   │   ├── capacitacion_programacion/
-│	│   │   ├── aprendiendo_backend/
-│	│   │   ├── aprendiendo_frontend/
-│	│   │   ├── aprendiendo_javascript/
+│	  │   │   ├── aprendiendo_backend/
+│	  │   │   ├── aprendiendo_frontend/
+│  	│   │   ├── aprendiendo_javascript/
 │   │   └── coordinacion_miembros/
-│	│   │   ├── enunciado.pdf
-│	│   │   ├── roadmap.md
-│	│   │   └── historial_cambios.md
+│	  │   │   ├── enunciado.pdf
+│	  │   │   ├── roadmap.md
+│	  │   │   └── historial_cambios.md
 │   ├── producto/
 │   │   ├── backend/
 │   │   │   ├── src/
