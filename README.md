@@ -22,11 +22,11 @@
 │   │   ├── capacitacion_programacion/
 │   │   |    ├── aprendiendo_backend/
 │   │   |    ├── aprendiendo_frontend/
-│   │   |    ├── aprendiendo_javascript/
+│   │   |    └── aprendiendo_javascript/
 │   │   └── coordinacion_miembros/
 |   |   |    ├── enunciado.pdf
 |   |   |    ├── roadmap.md
-|   |   |    ├── historial_cambios.md
+|   |   |    └── historial_cambios.md
 │   ├── producto/
 │   │   ├── backend/
 │   │   │   ├── src/
@@ -39,6 +39,7 @@
 │   │   │   ├── utils/
 │   │   │   └── README.md
 │   │   └── documentacion/
+│   │   │   └── user_stories/
 └── README.md
 ```
 
@@ -88,6 +89,13 @@ DOC_<< nombre_archivo >>.pdf
 -   Ubicación: /eco_harmony_park/producto/documentacion
 -   Ejemplo: DOC_RNF.pdf
 
+## User Stories
+
+US_<< tema >>_<< número us >>.pdf
+
+-   Ubicación: /eco_harmony_park/producto/documentacion/user_stories
+-   Ejemplo: US_Harmony_3.pdf
+
 # Glosario
 
 -   MAT: materiales.
@@ -102,7 +110,7 @@ DOC_<< nombre_archivo >>.pdf
 
 # Criterio de Línea Base
 
-Después de entregar cada trabajo práctico entregable, una vez que la versión entregada se haya subido al repositorio y todos los miembros del grupo estén de acuerdo con establecer la nueva línea base. Como máximo deberá pasar una semana entre la entrega y la creación de la línea base.
+Después de entregar cada trabajo práctico entregable, una vez que la versión entregada haya sido subida al repositorio, el trabajo haya sido corregido y todos los miembros del grupo estén de acuerdo con establecer la nueva línea base. Como máximo deberá pasar una semana entre la devolución corregida y la creación de la línea base.
 
 ## Nombre de Línea Base
 
