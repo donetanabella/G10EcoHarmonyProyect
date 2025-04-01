@@ -107,6 +107,7 @@ US_<< tema >>_<< número us >>.pdf
 -   apellido_miembro: apellido del miembro que sube el archivo.
 -   nombre_archivo: nombre designado para el archivo ya sea por algún miembro o por la tecnología usada.
 -   ext: extensión de un archivo.
+-   US: user story
 
 # Criterio de Línea Base
 
