@@ -1,0 +1,52 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comprar Entradas</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>EcoHarmony Park</h1>
+        <h2>Compra tus entradas</h2>
+    </header>
+    <main>
+        <form id="ticketForm">
+            <label for="visitDate">Fecha de visita:</label>
+            <input type="date" id="visitDate" required>
+            
+            <label for="ticketCount">Cantidad de entradas:</label>
+            <input type="number" id="ticketCount" min="1" max="10" required>
+            
+            <div id="visitorDetailsContainer">
+                <!-- Los inputs dinámicos de nombre, apellido y edad se generan aquí -->
+            </div>
+        
+            <label for="passType">Tipo de pase:</label>
+            <select id="passType" required>
+                <option value="regular">Regular</option>
+                <option value="vip">VIP</option>
+            </select>
+        
+            <!-- Contenedor para el precio total -->
+            <div id="totalPriceContainer" style="display: none;">
+            <h3>Total a pagar: $<span id="totalPrice">0</span></h3>
+            </div>
+
+        
+            <label for="paymentMethod">Forma de pago:</label>
+            <select id="paymentMethod" required>
+                <option value="cash">Efectivo</option>
+                <option value="card">Tarjeta de crédito</option>
+            </select>
+        
+            <button type="submit">Comprar</button>
+        </form>
+        
+        <div id="confirmationMessage"></div>
+    </main>
+</body>
+<script src="app.js"></script>
+</html>

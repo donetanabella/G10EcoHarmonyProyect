@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>EcoHarmony Park</h1>
+        <h2>Registrarse</h2>
+    </header>
+    <main>
+        <form id="registerForm">
+            <label for="registerEmail">Correo electrónico:</label>
+            <input type="email" id="registerEmail" required>
+            
+            <label for="registerPassword">Contraseña:</label>
+            <input type="password" id="registerPassword" required>
+            
+            <label for="registerConfirmPassword">Confirmar contraseña:</label>
+            <input type="password" id="registerConfirmPassword" required>
+            
+            <button type="submit">Registrarse</button>
+        </form>
+        <div id="registerMessage"></div>
+    </main>
+    <script src="register.js"></script>
+</body>
+</html>
