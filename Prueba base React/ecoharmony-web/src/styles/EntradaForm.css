@@ -1,82 +1,83 @@
 /* Estilo principal del formulario */
-  
+form {
+  background-color: var(--form-bg);
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* Título */
+h2 {
+  text-align: center;
+  color: var(--title-color);
+  margin-bottom: 1rem;
+}
+
+/* Etiquetas */
+label {
+  font-weight: bold;
+  color: var(--label-color);
+}
+
+/* Inputs y Select */
+input[type="date"],
+input[type="number"],
+select {
+  padding: 0.5rem;
+  border-radius: 8px;
+  border: 1px solid var(--input-border);
+  margin-bottom: 1rem;
+  font-size: 1rem;
+  background-color: #ffffff;
+  color: #333;
+}
+
+/* Botón de envío */
+button {
+  background-color: var(--button-bg);
+  color: white;
+  border: none;
+  cursor: pointer;
+  padding: 0.8rem;
+  border-radius: 8px;
+  font-size: 1.2rem;
+  transition: background-color 0.3s ease;
+}
+button:hover {
+  background-color: var(--button-hover);
+}
+
+/* Mensajes */
+p {
+  text-align: center;
+  font-weight: bold;
+  color: var(--message-color);
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
   form {
-    background-color: #f0fdf4;
-    padding: 2rem;
-    border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    width: 100%;
-    max-width: 600px; /* Ancho máximo para pantallas grandes */
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
+    max-width: 100%;
+    padding: 1rem;
   }
-  
-  /* Título */
+
   h2 {
-    text-align: center;
-    color: #2e7d32;
-    margin-bottom: 1rem;
+    font-size: 1.5rem;
   }
-  
-  /* Etiquetas de los campos */
+
   label {
-    font-weight: bold;
+    font-size: 0.9rem;
   }
-  
-  /* Estilo de los inputs */
-  input[type="date"],
-  input[type="number"],
-  select {
-    padding: 0.5rem;
-    border-radius: 8px;
-    border: 1px solid #ccc;
-    margin-bottom: 1rem;
+
+  input,
+  select,
+  button {
     font-size: 1rem;
   }
-  
-  /* Botón de envío */
-  button {
-    background-color: #43a047;
-    color: white;
-    border: none;
-    cursor: pointer;
-    padding: 0.8rem;
-    border-radius: 8px;
-    font-size: 1.2rem;
-    transition: background-color 0.3s ease;
-  }
-  
-  button:hover {
-    background-color: #388e3c;
-  }
-  
-  /* Mensajes */
-  p {
-    text-align: center;
-    font-weight: bold;
-    color: #2e7d32;
-  }
-  
-  /* Media Queries - Responsividad */
-  @media (max-width: 768px) {
-    form {
-      max-width: 100%; /* El formulario ocupa todo el ancho en pantallas pequeñas */
-      padding: 1rem;
-    }
-  
-    h2 {
-      font-size: 1.5rem;
-    }
-  
-    label {
-      font-size: 0.9rem;
-    }
-  
-    input,
-    select,
-    button {
-      font-size: 1rem;
-    }
-  }
-  
+}
+
