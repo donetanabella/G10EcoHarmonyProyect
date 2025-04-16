@@ -1,83 +1,301 @@
-/* Estilo principal del formulario */
-form {
-  background-color: var(--form-bg);
-  padding: 2rem;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  width: 100%;
-  max-width: 600px;
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap');
+
+:root {
+  --form-bg: #ECF39E;
+  --title-color: #132A13;
+  --label-color: #000000;
+  --input-border: #90A955;
+  --button-bg: #4F772D;
+  --button-hover: #31572c;
+  --message-color: #000000;
+  --error-color: #B22222;
+  --section-bg: #ecf39e93    ;
+  --card-border: #90a955;
+  --background-gradient-start: #ECF39E;
+  --background-gradient-end: #90A955;
 }
 
-/* Título */
-h2 {
+body {
+  font-family: 'Montserrat', sans-serif;
+  background: linear-gradient(to bottom right, var(--background-gradient-start), var(--background-gradient-end));
+}
+
+.form-container {
+  background-color: #a0c0a7c0;
+  border: 1px solid #c8e6c9;
+  padding: 2rem;
+  border-radius: 20px;
+  max-width: 700px;
+  margin: 2rem auto;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+  color: #2e7d32;
+}
+
+.form-container h2 {
   text-align: center;
   color: var(--title-color);
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
+  font-size: 1.8rem;
 }
 
-/* Etiquetas */
+.form-container h3 {
+  color: var(--title-color);
+  margin: 1.2rem 0 0.8rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--input-border);
+}
+
 label {
-  font-weight: bold;
+  display: block;
+  margin-top: 1rem;
+  font-weight: 500;
   color: var(--label-color);
+  margin-bottom: 0.3rem;
 }
 
-/* Inputs y Select */
-input[type="date"],
-input[type="number"],
+input,
 select {
-  padding: 0.5rem;
-  border-radius: 8px;
+  width: 100%;
+  padding: 0.7rem;
+  margin-top: 0.2rem;
   border: 1px solid var(--input-border);
-  margin-bottom: 1rem;
+  border-radius: 12px;
+  background: #fff;
+  box-sizing: border-box;
   font-size: 1rem;
-  background-color: #ffffff;
-  color: #333;
+  font-family: 'Montserrat', sans-serif;
 }
 
-/* Botón de envío */
-button {
-  background-color: var(--button-bg);
-  color: white;
-  border: none;
-  cursor: pointer;
-  padding: 0.8rem;
-  border-radius: 8px;
-  font-size: 1.2rem;
-  transition: background-color 0.3s ease;
+input:focus,
+select:focus {
+  outline: none;
+  border-color: var(--button-bg);
+  box-shadow: 0 0 0 2px rgba(67, 160, 71, 0.2);
 }
+
+button {
+  margin-top: 2rem;
+  padding: 0.9rem 1.5rem;
+  background-color: var(--button-bg);
+  border: none;
+  border-radius: 30px;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  width: 100%;
+  font-size: 1.1rem;
+  transition: all 0.2s ease;
+  font-family: 'Montserrat', sans-serif;
+}
+
 button:hover {
   background-color: var(--button-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
 }
 
-/* Mensajes */
-p {
+.message {
+  margin-top: 1rem;
+  padding: 1rem;
+  border-radius: 12px;
+  font-weight: 500;
   text-align: center;
-  font-weight: bold;
-  color: var(--message-color);
+  background-color: rgba(255, 255, 255, 0.6);
 }
 
-/* Media Queries */
+.message.error {
+  background-color: #ffebee;
+  border-left: 4px solid var(--error-color);
+  color: var(--error-color);
+  font-weight: 600;
+}
+
+.input-row {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.input-group {
+  flex: 1;
+}
+
+.visitante-form {
+  background-color: var(--section-bg);
+  padding: 1rem;
+  border-radius: 12px;
+  margin-bottom: 1.5rem;
+  border: 1px solid var(--card-border);
+  margin-top: 1.5rem; /* Ajusta el valor según el espacio que desees */
+}
+
+.payment-section {
+  background-color: var(--section-bg);
+  padding: 1.5rem;
+  border-radius: 12px;
+  margin: 1.5rem 0;
+  border: 1px solid var(--card-border);
+}
+
+.card-info {
+  padding: 1rem;
+  background-color: #fff;
+  border-radius: 12px;
+  margin-top: 1rem;
+  border: 1px dashed var(--input-border);
+}
+
+.card-logos {
+  display: flex;
+  justify-content: flex-start;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.card-logo {
+  height: 30px;
+}
+
+.checkbox-container {
+  display: flex;
+  align-items: center;
+  margin-top: 1.5rem;
+}
+
+.checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+}
+
+.checkbox-label input {
+  width: auto;
+  margin: 0;
+}
+
+.total-section {
+  margin-top: 2rem;
+  text-align: center;
+  padding: 1rem;
+  background-color: var(--section-bg);
+  border-radius: 12px;
+  border: 1px solid var(--card-border);
+}
+
+.total-section h3 {
+  margin-top: 0;
+  color: var(--title-color);
+  font-size: 1.5rem;
+}
+
+.pricing-info {
+  font-size: 0.9rem;
+  margin-bottom: 0.5rem;
+}
+
+.discount-info {
+  font-size: 0.8rem;
+  font-style: italic;
+}
+
+.confirmation-details {
+  margin-top: 2rem;
+  padding: 1.5rem;
+  background-color: #e8f5e9;
+  border-radius: 12px;
+  border: 1px solid #c8e6c9;
+}
+
+.confirmation-details h3 {
+  margin-top: 0;
+  color: var(--title-color);
+  text-align: center;
+  border-bottom: 1px solid var(--input-border);
+  padding-bottom: 0.5rem;
+}
+
+.confirmation-details p {
+  margin: 0.7rem 0;
+}
+
+.confirmation-details ul {
+  margin: 0.5rem 0;
+  padding-left: 1.5rem;
+}
+
+/* Agregar estos estilos adicionales para el DatePicker */
+
+.datepicker-container {
+  position: relative;
+  display: block;
+  width: 100%;
+}
+
+.datepicker-input {
+  width: 100%;
+  padding: 0.7rem;
+  margin-top: 0.2rem;
+  border: 1px solid var(--input-border);
+  border-radius: 12px;
+  background: #fff;
+  box-sizing: border-box;
+  font-size: 1rem;
+  font-family: 'Montserrat', sans-serif;
+  cursor: pointer;
+}
+
+/* Personalización del calendario de DatePicker */
+.react-datepicker {
+  font-family: 'Montserrat', sans-serif;
+  border-radius: 10px;
+  border: 1px solid var(--input-border);
+}
+
+.react-datepicker__header {
+  background-color: var(--section-bg);
+  border-bottom: 1px solid var(--input-border);
+}
+
+.react-datepicker__day--disabled {
+  color: #ccc;
+  text-decoration: line-through;
+}
+
+.react-datepicker__day--selected {
+  background-color: var(--button-bg);
+  color: white;
+}
+
+.react-datepicker__day:hover {
+  background-color: var(--section-bg);
+}
+
+.react-datepicker__day--keyboard-selected {
+  background-color: var(--button-bg);
+  opacity: 0.8;
+}
+
+/* Agregar una información visual sobre los días cerrados */
+.fechas-info {
+  font-size: 0.8rem;
+  margin-top: 0.3rem;
+  color: var(--label-color);
+  font-style: italic;
+}
+
+.cantidad-entradas {
+  margin-bottom: 1.5rem; /* Ajusta el valor según el espacio que desees */
+}
+
 @media (max-width: 768px) {
-  form {
-    max-width: 100%;
-    padding: 1rem;
+  .input-row {
+    flex-direction: column;
+    gap: 0.5rem;
   }
-
-  h2 {
-    font-size: 1.5rem;
-  }
-
-  label {
-    font-size: 0.9rem;
-  }
-
-  input,
-  select,
-  button {
-    font-size: 1rem;
+  
+  .form-container {
+    padding: 1.5rem;
   }
 }
 

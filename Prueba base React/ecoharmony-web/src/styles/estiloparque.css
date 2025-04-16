@@ -1,15 +1,15 @@
 :root {
-  --form-bg: #f0fdf4;
-  --title-color: #2e7d32;
-  --label-color: #2f4f2f;
-  --input-border: #89c997;
-  --button-bg: #43a047;
-  --button-hover: #388e3c;
-  --message-color: #2e7d32;
+  --form-bg: #ECF39E;
+  --title-color: #132A13;
+  --label-color: #31572C;
+  --input-border: #90A955;
+  --button-bg: #4F772D;
+  --button-hover: #31572C;
+  --message-color: #4F772D;
 }
 
 body {
-  background: linear-gradient(to bottom right, #beccbf, #99dd94);
+  background: linear-gradient(to bottom right, #ECF39E, #90A955);
 }
 
 .form-container {
@@ -23,7 +23,6 @@ body {
   font-family: 'Segoe UI', sans-serif;
   color: #2e7d32;
 }
-
 
 .form-container h2 {
   text-align: center;

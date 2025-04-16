@@ -14,6 +14,7 @@
     "express": "^5.1.0",
     "nodemailer": "^6.10.1",
     "react": "^19.0.0",
+    "react-datepicker": "^8.3.0",
     "react-dom": "^19.0.0",
     "react-router-dom": "^7.5.0"
   },

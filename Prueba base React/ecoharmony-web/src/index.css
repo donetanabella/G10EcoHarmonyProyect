@@ -6,16 +6,16 @@
   color-scheme: light dark;
 
   /* Colores base */
-  --text-color: rgba(255, 255, 255, 0.87);
-  --background-color: #242424;
-  --background-secondary: #2e2e2e;
-  --card-bg: #333;
-  --muted-text: #aaaaaade;
+  --text-color: #132A13;
+  --background-color: #ECF39E;
+  --background-secondary: #90A955;
+  --card-bg: #ECF39E;
+  --muted-text: #31572C;
 
   /* Colores de acento */
-  --accent-color: #646cffaa;
-  --accent-hover: #535bf2;
-  --accent-react: #61dafbaa;
+  --accent-color: #4F772D;
+  --accent-hover: #31572C;
+  --accent-react: #90A955;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
