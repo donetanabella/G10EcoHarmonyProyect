@@ -31,6 +31,11 @@ export default function EntradaForm() {
   // Configurar fechas mínimas y máximas permitidas
   useEffect(() => {
     const hoy = new Date();
+    const horaLimite = 14
+
+    if (hoy.getHours() >= horaLimite) {
+      hoy.setDate(hoy.getDate() + 1);
+    }
     
     const seisMesesDespues = new Date();
     seisMesesDespues.setMonth(hoy.getMonth() + 6);
