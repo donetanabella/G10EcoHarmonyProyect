@@ -11,12 +11,12 @@ app.use(cors());           // Para permitir solicitudes desde otros orígenes (f
 
 // Configuración del transporte de correo (en producción, usar credenciales reales)
 const transporter = nodemailer.createTransport({
-  host: "smtp.example.com",
+  host: "smtp.gmail.com", // Cambia esto por el host SMTP de tu proveedor
   port: 587,
   secure: false, // true para 465, false para otros puertos
   auth: {
-    user: "usuario@example.com", // usuario SMTP
-    pass: "contraseña", // contraseña SMTP
+    user: "reservas.ecoharmonypark@gmail.com", // usuario SMTP
+    pass: "gsjmlknfzjrzflkd", // contraseña SMTP
   },
 });
 
@@ -61,7 +61,16 @@ const enviarConfirmacion = async (datos) => {
         
         Método de pago: ${metodoPago}
         Total: ${new Intl.NumberFormat('es-AR', { style: 'currency', currency: 'ARS' }).format(montoTotal)}
-        
+        Error al enviar correo: Error: getaddrinfo ENOTFOUND smtp.example.com
+    at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:120:26) {
+  errno: -3008,
+  code: 'EDNS',
+  syscall: 'getaddrinfo',
+  hostname: 'smtp.example.com',
+  command: 'CONN'
+}
+No se pudo reenviar el correo al administrador.
+^C
         Gracias por su compra. ¡Lo esperamos en EcoHarmony Park!
       `,
       html: `
@@ -175,6 +184,17 @@ app.post("/api/comprar", async (req, res) => {
     
     // Simular envío de correo (en ambiente de desarrollo)
     console.log(`Se enviaría correo a: ${email}`);
+    try {
+
+      // Reenviar datos al correo específico
+      const reenviado = await enviarConfirmacion(req.body);
+      if (!reenviado) {
+        console.warn("No se pudo reenviar el correo al administrador.");
+      }
+      } catch (error) {
+      console.error("Error en el servidor:", error);
+      return res.status(500).json({ error: "Error al procesar la compra. Por favor intente nuevamente." });
+    }
     
     // Generar mensaje de respuesta según método de pago
     let mensaje;
