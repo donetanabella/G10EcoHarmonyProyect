@@ -17,7 +17,6 @@ export default function EntradaForm() {
     nombreTitular: "",
     fechaVencimiento: "",
     cvv: "",
-    email: "",
   });
 
   const [mensaje, setMensaje] = useState("");
@@ -437,14 +436,6 @@ export default function EntradaForm() {
           </div>
         )}
         
-        <label>📧 Email para confirmación:</label>
-        <input
-          type="email"
-          name="email"
-          value={form.email}
-          onChange={handleChange}
-          required
-        />
       </div>
 
       <div className="total-section">
