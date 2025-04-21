@@ -5,9 +5,20 @@ const nodemailer = require("nodemailer");
 const app = express();
 const port = 3000;  // El puerto en el que correrá el servidor
 
-// Middleware
+// Middleware para harcodear el usuario
 app.use(express.json());   // Para parsear el body de las peticiones como JSON
 app.use(cors());           // Para permitir solicitudes desde otros orígenes (frontend React)
+
+app.use((req, _res, next) => {
+  req.user = {
+    id: 1,
+    name: "Anabella Donet",
+    email: "anabella.donet@gmail.com"
+
+  };
+  next();
+}
+);
 
 // Configuración del transporte de correo (en producción, usar credenciales reales)
 const transporter = nodemailer.createTransport({
@@ -27,9 +38,9 @@ const formatDate = (dateString) => {
 };
 
 // Función para enviar correo de confirmación
-const enviarConfirmacion = async (datos) => {
+const enviarConfirmacion = async (datos, correoUsuario) => {
   try {
-    const { email, fecha, cantidad, visitantes, montoTotal, formaPago } = datos;
+    const { fecha, cantidad, visitantes, montoTotal, formaPago } = datos;
     
     // Construir lista de visitantes
     let listaVisitantes = '';
@@ -46,7 +57,7 @@ const enviarConfirmacion = async (datos) => {
     // Contenido del correo
     const mailOptions = {
       from: '"EcoHarmony Park" <reservas@ecoharmonypark.com>',
-      to: email,
+      to: correoUsuario,
       subject: "Confirmación de compra - EcoHarmony Park",
       text: `
         ¡Compra realizada con éxito!
@@ -83,7 +94,7 @@ No se pudo reenviar el correo al administrador.
           
           <p><strong>Detalle de los visitantes:</strong></p>
           <ul>
-            ${visitantes.map((v, i) => `<li>${v.nombre} ${v.apellido} - ${v.tipoEntrada === 'vip' ? 'VIP' : 'Regular'}</li>`).join('')}
+            ${visitantes.map((v, _i) => `<li>${v.nombre} ${v.apellido} - ${v.tipoEntrada === 'vip' ? 'VIP' : 'Regular'}</li>`).join('')}
           </ul>
           
           <p><strong>Método de pago:</strong> ${metodoPago}</p>
@@ -106,17 +117,18 @@ No se pudo reenviar el correo al administrador.
 // Modificación al endpoint de compra
 app.post("/api/comprar", async (req, res) => {
   console.log("Datos recibidos en el servidor:", req.body);
-  const { fecha, cantidad, visitantes, formaPago, email, montoTotal } = req.body;
+  const { fecha, cantidad, visitantes, formaPago, montoTotal } = req.body;
 
   // Validación completa de datos recibidos
-  if (!fecha || !cantidad || !Array.isArray(visitantes) || visitantes.length === 0 || !formaPago || !email) {
+  if (!fecha || !cantidad || !Array.isArray(visitantes) || visitantes.length === 0 || !formaPago || !req.user.email) {
     console.log("Campos requeridos faltantes:", {
       fecha: !!fecha,
       cantidad: !!cantidad,
       visitantesArray: Array.isArray(visitantes),
       visitantesLength: visitantes?.length,
       formaPago: !!formaPago,
-      email: !!email
+      email: !!req.user.email,
+      
     });
     return res.status(400).json({ error: "Todos los campos son obligatorios" });
   }
@@ -183,11 +195,11 @@ app.post("/api/comprar", async (req, res) => {
     }
     
     // Simular envío de correo (en ambiente de desarrollo)
-    console.log(`Se enviaría correo a: ${email}`);
+    console.log(`Se enviaría correo a: ${req.user.email}`);
     try {
 
       // Reenviar datos al correo específico
-      const reenviado = await enviarConfirmacion(req.body);
+      const reenviado = await enviarConfirmacion(req.body, req.user.email);
       if (!reenviado) {
         console.warn("No se pudo reenviar el correo al administrador.");
       }
