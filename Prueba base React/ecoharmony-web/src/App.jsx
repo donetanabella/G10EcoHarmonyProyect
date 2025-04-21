@@ -2,7 +2,7 @@ import React from "react";
 import FormularioCompra from "./components/EntradaForm";
 import DetalleCompra from "./components/DetalleCompra";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import logo from "./assets/logo.png"; // Asegúrate de que la ruta sea correcta
+import logo from "./assets/logoEcoHarmony.png"; // Asegúrate de que la ruta sea correcta
 
 function App() {
   return (
@@ -14,13 +14,16 @@ function App() {
               src={logo}
               alt="EcoHarmony Park Logo"
               style={{
+                width: "100%",
+                height: "150px",
+                objectFit: "cover",
                 display: "block",
-                margin: "0 auto 1rem auto",
-                maxWidth: "180px",
-                height: "auto"
+                margin: "0",
+                padding: "0",
+                border: "none", 
+                boxShadow: "none" 
               }}
             />
-            <h1>🌿 Bienvenido a EcoHarmony Park 🌿</h1>
             <FormularioCompra />
           </div>
         } />
