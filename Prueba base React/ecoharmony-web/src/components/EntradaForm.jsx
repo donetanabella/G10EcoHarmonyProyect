@@ -129,11 +129,24 @@ export default function EntradaForm() {
   const handleChange = (e, index = null) => {
     const { name, value } = e.target;
     
-    if (index !== null) {
+    if (["nombre", "apellido", "nombreTitular"].includes(name)) {
+      // Permitir solo letras y espacios
+      const valorValidado = value.replace(/[^a-zA-ZáéíóúÁÉÍÓÚñÑ\s]/g, "");
+      if (index !== null) {
+        const nuevosVisitantes = [...form.visitantes];
+        nuevosVisitantes[index] = {
+          ...nuevosVisitantes[index],
+          [name]: valorValidado,
+        };
+        setForm({ ...form, visitantes: nuevosVisitantes });
+      } else {
+        setForm({ ...form, [name]: valorValidado });
+      }
+    } else if (index !== null) {
       const nuevosVisitantes = [...form.visitantes];
       nuevosVisitantes[index] = {
         ...nuevosVisitantes[index],
-        [name]: value
+        [name]: value,
       };
       setForm({ ...form, visitantes: nuevosVisitantes });
     } else if (name === "numeroTarjeta") {
