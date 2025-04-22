@@ -438,7 +438,12 @@ export default function EntradaForm() {
                   type="text"
                   name="cvv"
                   value={form.cvv}
-                  onChange={handleChange}
+                  onChange={(e) => {
+                    const valor = e.target.value;
+                    if (/^\d*$/.test(valor)) { // Permitir solo números
+                      setForm({ ...form, cvv: valor });
+                    }
+                  }}
                   placeholder="XXX"
                   maxLength={3}
                   required
