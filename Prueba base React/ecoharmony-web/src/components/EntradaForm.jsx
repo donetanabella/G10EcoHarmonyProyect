@@ -242,7 +242,7 @@ export default function EntradaForm() {
       
       console.log("Enviando datos al servidor:", datosCompra);
       const res = await comprarEntradas(datosCompra);
-      console.log("Respuesta del servidor:", res.data);
+      console.log("Respuesta del servidor:", res.data);  
 
       if (form.formaPago === "efectivo") {
         setMensaje("Usted reservó su entrada con éxito. Para confirmar la compra, debe abonar en la boletería del parque");
@@ -259,6 +259,8 @@ export default function EntradaForm() {
       
       const fechaFormateada = formatearFechaLocal(form.fecha);
       setConfirmacion({
+        id: res.data.detalles.id,
+        estado: res.data.detalles.estado,
         fecha: fechaFormateada,
         cantidad: form.cantidad,
         visitantes: form.visitantes,
@@ -268,6 +270,8 @@ export default function EntradaForm() {
       });
       
       localStorage.setItem("detalleCompra", JSON.stringify({
+        id: res.data.detalles.id,
+        estado: res.data.detalles.estado,
         fecha: fechaFormateada,
         cantidad: form.cantidad,
         visitantes: form.visitantes,

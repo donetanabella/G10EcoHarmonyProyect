@@ -24,6 +24,7 @@ export default function DetalleCompra() {
   return (
     <div className="confirmation-details" style={{ maxWidth: 600, margin: "2rem auto" }}>
       <h3>Detalles de la compra</h3>
+      <p><strong>Código de la compra:</strong> {compra.id}</p>
       <p><strong>Fecha de visita:</strong> {compra.fecha}</p>
       <p><strong>Cantidad de entradas:</strong> {compra.cantidad}</p>
       <p><strong>Visitantes:</strong></p>
@@ -35,6 +36,7 @@ export default function DetalleCompra() {
         ))}
       </ul>
       <p><strong>Método de pago:</strong> {compra.formaPago}</p>
+      <p><strong>Estado de la compra:</strong> {compra.estado}</p>
       <p><strong>Total:</strong> {compra.montoTotal}</p>
     </div>
   );
