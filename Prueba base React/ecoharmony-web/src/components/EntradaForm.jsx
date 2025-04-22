@@ -423,7 +423,16 @@ export default function EntradaForm() {
               type="text"
               name="numeroTarjeta"
               value={form.numeroTarjeta}
-              onChange={handleChange}
+              onChange={(e) => {
+                const valor = e.target.value;
+                // Permitir solo números y formatear como XXXX XXXX XXXX XXXX
+                const valorFormateado = valor
+                  .replace(/\D/g, '') // Eliminar caracteres no numéricos
+                  .replace(/(\d{4})/g, '$1 ') // Insertar un espacio cada 4 dígitos
+                  .trim()
+                  .substring(0, 19); // Limitar a 19 caracteres (16 dígitos + 3 espacios)
+                setForm({ ...form, numeroTarjeta: valorFormateado });
+              }}
               placeholder="XXXX XXXX XXXX XXXX"
               maxLength={19}
               required
