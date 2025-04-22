@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { comprarEntradas } from "../services/api";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
@@ -20,17 +20,19 @@ export default function EntradaForm() {
   });
 
   const [mensaje, setMensaje] = useState("");
-  const [confirmacion, setConfirmacion] = useState(null);
+  const [, setConfirmacion] = useState(null);
   const [montoTotal, setMontoTotal] = useState(0);
   const [fechaMinima, setFechaMinima] = useState(new Date());
   const [fechaMaxima, setFechaMaxima] = useState(null);
   const [fechaSeleccionada, setFechaSeleccionada] = useState(null);
   const [fechaVencimientoPicker, setFechaVencimientoPicker] = useState(null);
+  const tarjetaRef = useRef(null);
+  const [, setErrorTarjeta] = useState("");
 
   // Configurar fechas mínimas y máximas permitidas
   useEffect(() => {
     const hoy = new Date();
-    const horaLimite = 14
+    const horaLimite = 18
 
     if (hoy.getHours() >= horaLimite) {
       hoy.setDate(hoy.getDate() + 1);
@@ -213,14 +215,17 @@ export default function EntradaForm() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setMensaje("");
+    setErrorTarjeta("");
 
     // Validar tarjeta si corresponde
     if (form.formaPago !== "efectivo") {
       if (!form.numeroTarjeta || !form.nombreTitular || !form.fechaVencimiento || !form.cvv) {
         setMensaje("Por favor complete todos los datos de la tarjeta");
+        tarjetaRef.current.focus();
         return;
       }
       if (!validarTarjeta()) {
+        tarjetaRef.current.focus();
         return;
       }
     }
@@ -231,13 +236,15 @@ export default function EntradaForm() {
       
       const datosCompra = {
         ...form,
-        montoTotal: montoNumerico
+        montoTotal: montoNumerico,
+        numeroTarjeta: form.formaPago === "efectivo" ? null : form.numeroTarjeta,
       };
       
       console.log("Enviando datos al servidor:", datosCompra);
       const res = await comprarEntradas(datosCompra);
       console.log("Respuesta del servidor:", res.data);
-            if (form.formaPago === "efectivo") {
+
+      if (form.formaPago === "efectivo") {
         setMensaje("Usted reservó su entrada con éxito. Para confirmar la compra, debe abonar en la boletería del parque");
       } else {
         setMensaje(res.data.mensaje);
@@ -274,7 +281,12 @@ export default function EntradaForm() {
       // Mostrar error detallado
       console.error("Error completo:", err);
       console.error("Detalles de respuesta:", err.response?.data);
-      setMensaje(err.response?.data?.error || "Error al procesar la compra. Por favor intente nuevamente.");
+      if (err.response?.data?.error=== "Saldo insuficiente") {
+        setMensaje("Saldo insuficiente. Por favor verifique su saldo y vuelva a intentar.");
+        tarjetaRef.current.focus();
+      } else  {
+        setMensaje(err.response?.data?.error || "Error al procesar la compra. Por favor intente nuevamente.");
+      }
     }
   };
 
