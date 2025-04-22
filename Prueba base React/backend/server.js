@@ -90,7 +90,7 @@ No se pudo reenviar el correo al administrador.
           <h2 style="color: #2e7d32; text-align: center;">¡Compra realizada con éxito!</h2>
           <h3 style="color: #33691e;">Detalles de la compra:</h3>
           
-          <p><strong>Número de compra:</strong> ${numeroCompra}</p>
+          <p><strong>Código de compra:</strong> ${numeroCompra}</p>
           <p><strong>Para el día:</strong> ${fechaFormateada}</p>
           <p><strong>Cantidad de entradas:</strong> ${cantidad}</p>
           
@@ -270,6 +270,8 @@ app.post("/api/comprar", async (req, res) => {
     return res.status(200).json({
       mensaje,
       detalles: {
+        id: nuevaCompra.id,
+        estado: nuevaCompra.estado,
         fecha: fechaVisitante.toLocaleDateString('es-AR'),
         cantidad,
         visitantes,
