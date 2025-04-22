@@ -33,7 +33,9 @@ const transporter = nodemailer.createTransport({
 
 // Función para formatear la fecha
 const formatDate = (dateString) => {
-  const date = new Date(dateString);
+  // dateString: "YYYY-MM-DD"
+  const [year, month, day] = dateString.split('-').map(Number);
+  const date = new Date(year, month - 1, day); // Esto es horario local
   return date.toLocaleDateString('es-AR');
 };
 
@@ -164,6 +166,21 @@ app.post("/api/comprar", async (req, res) => {
     return res.status(400).json({ error: "Todos los campos son obligatorios" });
   }
 
+  const visitantesTransformados = visitantes.map((visitante) => {
+    let categoriaEdad;
+    if (visitante.edad <= 12) {
+      categoriaEdad = "Niño";
+    } else if (visitante.edad <= 64) {
+      categoriaEdad = "Adulto";
+    } else {
+      categoriaEdad = "Adulto Mayor";
+    }
+    return {
+      ...visitante,
+      edad: categoriaEdad, // Reemplazar el valor numérico por la categoría
+    };
+  });
+
   // Verificar si la cantidad de entradas es válida
   if (cantidad > 10) {
     return res.status(400).json({ error: "La cantidad de entradas no puede ser mayor a 10" });
@@ -235,7 +252,7 @@ app.post("/api/comprar", async (req, res) => {
       id: idCompra++, // Asignar ID único y luego incrementarlo
       fecha: fechaVisitante.toLocaleDateString('es-AR'),
       cantidad,
-      visitantes,
+      visitantes: visitantesTransformados,
       formaPago,
       montoTotal: typeof montoTotal === 'number' ? montoTotal : parseFloat(montoTotal),
       usuario: req.user.id,
