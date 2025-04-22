@@ -28,6 +28,7 @@ export default function EntradaForm() {
   const [fechaVencimientoPicker, setFechaVencimientoPicker] = useState(null);
   const tarjetaRef = useRef(null);
   const [, setErrorTarjeta] = useState("");
+  const [compraExitosa, setCompraExitosa] = useState(false);
 
   // Configurar fechas mínimas y máximas permitidas
   useEffect(() => {
@@ -279,6 +280,9 @@ export default function EntradaForm() {
         formaPago: form.formaPago === "efectivo" ? "Efectivo" : 
                   form.formaPago === "visa" ? "Tarjeta Visa" : "Tarjeta Mastercard"
       }));
+
+      setCompraExitosa(true);
+
       window.open("/detalle-compra", "_blank");
       
     } catch (err) {
@@ -465,7 +469,37 @@ export default function EntradaForm() {
         <p className="discount-info">Niños menores de 10 años y adultos mayores de 65 años tienen 50% de descuento</p>
       </div>
 
-      <button type="submit">✅ Confirmar compra</button>
+      <div className="button-container">
+       {!compraExitosa ? (
+          <button type="submit" style={{ color: "white" }}> Confirmar compra</button>
+        ) : (
+      <button style={{ color: "white" }}
+        type="button"
+        onClick={() => {
+          // Reiniciar el formulario y los estados
+          setForm({
+            fecha: "",
+            cantidad: 1,
+            visitantes: [{ nombre: "", apellido: "", edad: "", tipoEntrada: "regular" }],
+            formaPago: "",
+            numeroTarjeta: "",
+            nombreTitular: "",
+            fechaVencimiento: "",
+            cvv: "",
+          });
+          setMensaje("");
+          setMontoTotal(0);
+          setFechaSeleccionada(null);
+          setFechaVencimientoPicker(null);
+          setCompraExitosa(false);
+        }}
+      >
+        Realizar otra compra
+      </button>
+  )}
+</div>
+
+        
 
       {mensaje && (
         <p className={`message${mensaje.toLowerCase().includes("tarjeta") || mensaje.toLowerCase().includes("saldo") ? " error" : ""}`}>
