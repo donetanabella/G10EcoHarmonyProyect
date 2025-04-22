@@ -38,7 +38,7 @@ const formatDate = (dateString) => {
 };
 
 // Función para enviar correo de confirmación
-const enviarConfirmacion = async (datos, correoUsuario) => {
+const enviarConfirmacion = async (datos, numeroCompra, estadoPago, correoUsuario) => {
   try {
     const { fecha, cantidad, visitantes, montoTotal, formaPago } = datos;
     
@@ -58,12 +58,13 @@ const enviarConfirmacion = async (datos, correoUsuario) => {
     const mailOptions = {
       from: '"EcoHarmony Park" <reservas@ecoharmonypark.com>',
       to: correoUsuario,
-      subject: "Confirmación de compra - EcoHarmony Park",
+      subject: `Confirmación de compra - EcoHarmony Park`,
       text: `
         ¡Compra realizada con éxito!
         
         Detalles de la compra:
         
+        Código de compra: ${numeroCompra}
         Para el día: ${fechaFormateada}
         Cantidad de entradas: ${cantidad}
         
@@ -89,6 +90,7 @@ No se pudo reenviar el correo al administrador.
           <h2 style="color: #2e7d32; text-align: center;">¡Compra realizada con éxito!</h2>
           <h3 style="color: #33691e;">Detalles de la compra:</h3>
           
+          <p><strong>Número de compra:</strong> ${numeroCompra}</p>
           <p><strong>Para el día:</strong> ${fechaFormateada}</p>
           <p><strong>Cantidad de entradas:</strong> ${cantidad}</p>
           
@@ -98,6 +100,7 @@ No se pudo reenviar el correo al administrador.
           </ul>
           
           <p><strong>Método de pago:</strong> ${metodoPago}</p>
+          <p><strong>Estado de la compra:</strong> ${estadoPago}</p>
           <p><strong>Total:</strong> ${new Intl.NumberFormat('es-AR', { style: 'currency', currency: 'ARS' }).format(montoTotal)}</p>
           
           <p style="text-align: center; margin-top: 30px; color: #2e7d32;">¡Gracias por su compra! Lo esperamos en EcoHarmony Park.</p>
@@ -113,6 +116,34 @@ No se pudo reenviar el correo al administrador.
     return false;
   }
 };
+
+const comprasRealizadas = [
+  {
+    "id" : 1,
+    "fecha": "01/01/2025",
+    "cantidad": 1,
+    "visitantes": [
+      { "nombre": "Juan", "apellido": "Pérez", "tipoEntrada": "vip" },
+    ],
+    "formaPago": "visa",
+    "montoTotal": 10000,
+    "idUsuario": "1",
+    "estado": "pagada"
+  },
+  {
+    "id" : 2,
+    "fecha": "01/04/2025",
+    "cantidad": 2,
+    "visitantes": [
+      { "nombre": "Lola", "apellido": "Vaca", "tipoEntrada": "vip" },
+    ],
+    "formaPago": "visa",
+    "montoTotal": 10000,
+    "usuario": "2",
+    "estado": "pagada"
+  }
+];
+let idCompra = 3;
 
 // Modificación al endpoint de compra
 app.post("/api/comprar", async (req, res) => {
@@ -199,13 +230,26 @@ app.post("/api/comprar", async (req, res) => {
       // Simular procesamiento de pago
       console.log("Procesando pago con tarjeta...");
     }
+
+    const nuevaCompra = {
+      id: idCompra++, // Asignar ID único y luego incrementarlo
+      fecha: fechaVisitante.toLocaleDateString('es-AR'),
+      cantidad,
+      visitantes,
+      formaPago,
+      montoTotal: typeof montoTotal === 'number' ? montoTotal : parseFloat(montoTotal),
+      usuario: req.user.id,
+      estado: formaPago === "efectivo" ? "pendiente" : "pagada",
+    };
+
+    comprasRealizadas.push(nuevaCompra);
     
-    // Simular envío de correo (en ambiente de desarrollo)
+    // Envío de correo
     console.log(`Se enviaría correo a: ${req.user.email}`);
     try {
 
       // Reenviar datos al correo específico
-      const reenviado = await enviarConfirmacion(req.body, req.user.email);
+      const reenviado = await enviarConfirmacion(req.body, nuevaCompra.id, nuevaCompra.estado, req.user.email);
       if (!reenviado) {
         console.warn("No se pudo reenviar el correo al administrador.");
       }
