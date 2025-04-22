@@ -123,7 +123,7 @@ const comprasRealizadas = [
     "fecha": "01/01/2025",
     "cantidad": 1,
     "visitantes": [
-      { "nombre": "Juan", "apellido": "Pérez", "tipoEntrada": "vip" },
+      { "nombre": "Juan", "apellido": "Pérez", "tipoEntrada": "vip" , "edad": "Niño"},
     ],
     "formaPago": "visa",
     "montoTotal": 10000,
@@ -135,7 +135,7 @@ const comprasRealizadas = [
     "fecha": "01/04/2025",
     "cantidad": 2,
     "visitantes": [
-      { "nombre": "Lola", "apellido": "Vaca", "tipoEntrada": "vip" },
+      { "nombre": "Lola", "apellido": "Vaca", "tipoEntrada": "vip" , "edad": "Adulto"},
     ],
     "formaPago": "visa",
     "montoTotal": 10000,
