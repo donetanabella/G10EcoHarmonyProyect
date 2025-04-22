@@ -191,6 +191,12 @@ app.post("/api/comprar", async (req, res) => {
 
     // Si es pago con tarjeta, simulamos procesamiento
     if (formaPago !== "efectivo") {
+      const tarjetasSaldoInsuficiente = ["4444 4444 4444 4444", "5555 5555 5555 5555", "2222 2222 2222 2222"];
+      const tarjeta = req.body.numeroTarjeta;
+      if (tarjetasSaldoInsuficiente.includes(tarjeta)) {
+        return res.status(400).json({ error: "Saldo insuficiente" });
+      }
+      // Simular procesamiento de pago
       console.log("Procesando pago con tarjeta...");
     }
     
