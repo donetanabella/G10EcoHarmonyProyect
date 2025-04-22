@@ -45,7 +45,7 @@ const enviarConfirmacion = async (datos, numeroCompra, estadoPago, correoUsuario
     // Construir lista de visitantes
     let listaVisitantes = '';
     visitantes.forEach((visitante, index) => {
-      listaVisitantes += `${index + 1}. ${visitante.nombre} ${visitante.apellido} - ${visitante.tipoEntrada === 'vip' ? 'VIP' : 'Regular'}\n`;
+      listaVisitantes += `${index + 1}. ${visitante.nombre} ${visitante.apellido} - ${visitante.tipoEntrada === 'vip' ? 'VIP' : 'Regular'} - ${visitante.edad}\n`;
     });
     
     const metodoPago = formaPago === 'efectivo' 
@@ -96,7 +96,7 @@ No se pudo reenviar el correo al administrador.
           
           <p><strong>Detalle de los visitantes:</strong></p>
           <ul>
-            ${visitantes.map((v, _i) => `<li>${v.nombre} ${v.apellido} - ${v.tipoEntrada === 'vip' ? 'VIP' : 'Regular'}</li>`).join('')}
+            ${visitantes.map((v, _i) => `<li>${v.nombre} ${v.apellido} - ${v.tipoEntrada === 'vip' ? 'VIP' : 'Regular'} - ${v.edad} </li>`).join('')}
           </ul>
           
           <p><strong>Método de pago:</strong> ${metodoPago}</p>
