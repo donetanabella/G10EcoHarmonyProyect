@@ -1,0 +1,141 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f3f4f6;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    text-align: center;
+    padding: 20px;
+    background-color: #4caf50;
+    color: white;
+}
+
+main {
+    padding: 20px;
+    max-width: 600px;
+    margin: auto;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+}
+
+form label {
+    display: block;
+    margin: 10px 0 5px;
+}
+
+form input, form select, form button {
+    width: 100%;
+    margin-bottom: 20px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+form button {
+    background-color: #4caf50;
+    color: white;
+    cursor: pointer;
+}
+
+form button:hover {
+    background-color: #45a049;
+}
+
+.visitor-info {
+    margin-bottom: 20px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+.visitor-info label {
+    display: block;
+    margin-top: 5px;
+}
+
+.visitor-info {
+    margin-bottom: 20px;
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    max-width: 100%; /* Asegura que no exceda el contenedor */
+    box-sizing: border-box; /* Incluye el padding dentro del ancho total */
+}
+
+.visitor-info label {
+    display: block;
+    margin: 5px 0;
+    font-weight: bold; /* Agrega énfasis en el texto del label */
+}
+
+.visitor-info input {
+    width: 100%; /* Hace que los campos sean proporcionales */
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box; /* Incluye el padding dentro del ancho */
+}
+
+form {
+    margin: 0 auto; /* Centra el formulario */
+    max-width: 600px; /* Limita el ancho total del formulario */
+    background-color: #ffffff; /* Fondo blanco limpio */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Sombra ligera para estética */
+}
+
+
+form input, form select {
+    width: 100%; /* Uniforma el ancho de todos los campos */
+    margin-bottom: 20px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box; /* Incluye el padding dentro del ancho total */
+}
+
+form label {
+    font-weight: bold;
+    margin-bottom: 5px;
+    display: block;
+}
+
+.visitor-info input {
+    width: 100%; /* Asegura que los inputs de los visitantes también sean proporcionales */
+}
+
+.visitor-info label {
+    display: block;
+    margin-top: 5px;
+}
+
+form {
+    margin: 0 auto;
+    max-width: 600px; /* Limita el ancho total del formulario */
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Sombra ligera */
+}
+
+
+#totalPriceContainer {
+    margin-top: 20px;
+    margin-bottom: 30px; /* Espacio adicional debajo del contenedor */
+    padding: 15px;
+    background-color: #d4edda; /* Verde claro */
+    border: 2px solid #c3e6cb; /* Bordes en un tono ligeramente más oscuro */
+    border-radius: 10px; /* Bordes redondeados */
+    color: #155724; /* Letra negra verdosa */
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Sombra para darle profundidad */
+}
