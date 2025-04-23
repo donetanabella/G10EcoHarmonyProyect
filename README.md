@@ -24,22 +24,37 @@
 │   │   |    ├── aprendiendo_frontend/
 │   │   |    └── aprendiendo_javascript/
 │   │   └── coordinacion_miembros/
-|   |   |    ├── enunciado.pdf
+|   |   |    ├── ISW_Enunciados TP evaluables 2025 1erCuat.pdf
 |   |   |    ├── roadmap.md
 |   |   |    └── historial_cambios.md
 │   ├── producto/
 │   │   ├── backend/
+│   │   │   ├── node_modules/
+│   │   │   ├── package-lock.json
+│   │   │   ├── package.json
+│   │   │   └── server.js
+│   │   ├── ecoharmony-web/
+│   │   │   ├── public/
 │   │   │   ├── src/
-│   │   │   ├── routes
-│   │   │   ├── controllers/
+│   │   │   ├── .gitignore
+|   |   |   ├── eslint.config.js
+|   |   |   ├── index.html
+|   |   |   ├── package-lock.json
+│   │   │   ├── package.json
+|   |   |   ├── vite.config.js
 │   │   │   └── README.md
-│   │   ├── frontend/
-│   │   │   ├── components/
-│   │   │   ├── assets/
-│   │   │   ├── utils/
-│   │   │   └── README.md
+|   |   ├── user-compra-entradas/
+│   │   │   ├── login/
+│   │   │   ├── app.js
+│   │   │   ├── confirmation.html
+│   │   │   ├── confirmation.js
+│   │   │   ├──index.html
+│   │   │   ├── pagina-de-pago.html
+│   │   │   ├── styles.css
+│   │   │   └── server.js
 │   │   └── documentacion/
-│   │   │   └── user_stories/
+│   │   │   ├── DOC_Preguntas_respondidas_TP6.pdf
+|           └── TP6_DocumentoDeEstilos_4K4_G10.pdf
 └── README.md
 ```
 
