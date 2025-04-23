@@ -97,17 +97,14 @@ export default function EntradaForm() {
     let total = 0;
     form.visitantes.forEach(visitante => {
       const precioBase = visitante.tipoEntrada === "vip" ? 10000 : 6000;
-      const edad = parseInt(visitante.edad);
       
       // Aplicar descuentos por edad
-      if (!isNaN(edad)) {
-        if (edad < 10 || edad >= 65) {
+        if (visitante.edad === "Niño" || visitante.edad === "Adulto Mayor") {
           // 50% de descuento para niños y adultos mayores
           total += precioBase * 0.5;
         } else {
           total += precioBase;
         }
-      }
     });
     
     // Formato para mostrar al usuario
@@ -380,9 +377,9 @@ export default function EntradaForm() {
                 required
               >
                 <option value="">Seleccionar</option>
-                <option value="5">Niño (menor de 10 años)</option>
-                <option value="30">Adulto (10-64 años)</option>
-                <option value="70">Adulto Mayor (65+ años)</option>
+                <option value="Niño">Niño (menor de 10 años)</option>
+                <option value="Adulto">Adulto (10-64 años)</option>
+                <option value="Adulto Mayor">Adulto Mayor (65+ años)</option>
               </select>
             </div>
             
