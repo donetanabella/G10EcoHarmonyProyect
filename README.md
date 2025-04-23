@@ -131,3 +131,5 @@ Después de entregar cada trabajo práctico entregable, una vez que la versión 
 ## Nombre de Línea Base
 
 tp <<número de trabajo>>_release
+
+Primer línea base: tp6_release : Luego de corrección de TP6.
