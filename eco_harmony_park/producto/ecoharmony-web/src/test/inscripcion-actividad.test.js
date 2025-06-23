@@ -1,5 +1,5 @@
 // Tests para el sistema de inscripción simple
-const { inscribirAActividad } = require("./inscripcion-actividad");
+import { inscribirAActividad } from "./inscripcion-actividad.js";
 
 describe("Sistema de Inscripción - EcoHarmony Park", () => {
   // CASOS EXITOSOS

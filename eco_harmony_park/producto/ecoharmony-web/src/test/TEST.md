@@ -1,7 +1,5 @@
 # Información sobre Tests - EcoHarmony Park
 
-## **Nota para la Profesora**
-
 Los tests de este proyecto fueron implementados utilizando **Jest** (framework de testing para JavaScript), por lo que la sintaxis difiere de la mostrada en clase.
 
 ---

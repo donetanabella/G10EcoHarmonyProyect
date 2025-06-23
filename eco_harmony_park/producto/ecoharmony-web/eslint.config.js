@@ -30,4 +30,22 @@ export default [
       ],
     },
   },
+  // Configuración específica para archivos de test
+  {
+    files: ['**/*.test.js', '**/test/**/*.js'],
+    languageOptions: {
+      ecmaVersion: 2020,
+      globals: {
+        ...globals.node,
+        ...globals.jest,
+      },
+      parserOptions: {
+        ecmaVersion: 'latest',
+        sourceType: 'module',
+      },
+    },
+    rules: {
+      ...js.configs.recommended.rules,
+    },
+  },
 ]
